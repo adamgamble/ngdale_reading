@@ -1,0 +1,17 @@
+%a{:name => "daily"}
+%hr
+%h2= "Daily Reading - #{@daily_reading.daily_reading}"
+%hr
+=esv_bible.lookup_passage(@daily_reading.daily_reading).html_safe
+
+%a{:name => "weekly"}
+%hr
+%h2= "Weekly Reading - #{@daily_reading.weekly_reading}"
+%hr
+=esv_bible.lookup_passage(@daily_reading.weekly_reading).html_safe
+
+%a{:name => "monthly"}
+%hr
+%h2= "Monthly Reading - #{@daily_reading.monthly_reading}"
+%hr
+=esv_bible.lookup_passage(@daily_reading.monthly_reading).html_safe

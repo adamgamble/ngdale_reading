@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2011-12-26
+  daily_reading: MyString
+  weekly_reading: MyString
+  monthly_reading: MyString
+
+two:
+  date: 2011-12-26
+  daily_reading: MyString
+  weekly_reading: MyString
+  monthly_reading: MyString
