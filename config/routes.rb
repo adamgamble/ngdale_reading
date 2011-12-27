@@ -1,7 +1,10 @@
-NgdaleReading::Application.routes.draw do
-  devise_for :users
-  root :to => "custom_pages#home"
+NgdaleReading::Application.routes.draw do  root :to => "custom_pages#home"
 
+  resources :sms do
+    collection do
+      post "reply"
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
