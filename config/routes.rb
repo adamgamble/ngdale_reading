@@ -5,6 +5,8 @@ NgdaleReading::Application.routes.draw do  root :to => "custom_pages#home"
       post "reply"
     end
   end
+
+  resources :calls, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
