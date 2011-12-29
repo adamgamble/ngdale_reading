@@ -16,6 +16,8 @@ class ScheduledSmsAlert < ActiveRecord::Base
       end
     end
 
+    scope :for_alerting, lambda { where("time BETWEEN ? and ?", Time.now - 5.minutes, Time.now + 5.minutes)}
+
     def alert_of_todays_reading
       @daily_reading = DailyReading.first
       TwilioClient.client.account.sms.messages.create(
