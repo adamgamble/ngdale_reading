@@ -5,6 +5,7 @@ class SmsController < ApplicationController
     @twilio_client = TwilioClient.client
     @scheduled_sms_alert = ScheduledSmsAlert.find_by_number(params["From"])
 
+    Rails.logger.warn "Found: #{@scheduled_sms_alert.id}"
     case params["Body"].downcase
     when /bible (\d+:\d{2} ?(AM|am|PM|pm))$/i
       matches = params["Body"].scan /bible (\d+:\d{2} ?(AM|am|PM|pm))$/i
@@ -13,6 +14,8 @@ class SmsController < ApplicationController
       @scheduled_sms_alert.time = time
       @scheduled_sms_alert.authorize!
       @scheduled_sms_alert.save
+      Rails.logger.warn "Errors: #{@scheduled_sms_alert.errors.full_messages.to_sentence}"
+      Rails.logger.warn @scheduled_sms_alert.inspect
       response = Twilio::TwiML::Response.new do |r|
         r.Sms "You will now receive daily bible reminders at #{time.strftime("%I:%M %p")}", :to => params["From"], :from => "12052891112"
       end
