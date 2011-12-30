@@ -14,7 +14,7 @@ class SmsController < ApplicationController
       @scheduled_sms_alert.authorize!
       @scheduled_sms_alert.save
       response = Twilio::TwiML::Response.new do |r|
-        r.Sms "You will now receive daily bible reminders at #{time.zone.strftime("%I:%M %p")}", :to => params["From"], :from => "12052891112"
+        r.Sms "You will now receive daily bible reminders at #{time.strftime("%I:%M %p")}", :to => params["From"], :from => "12052891112"
       end
     when "cancel bible"
       response = Twilio::TwiML::Response.new do |r|
