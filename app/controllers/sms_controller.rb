@@ -9,7 +9,7 @@ class SmsController < ApplicationController
     case params["Body"].downcase
     when /bible (\d+:\d{2} ?(AM|am|PM|pm))$/i
       matches = params["Body"].scan /bible (\d+:\d{2} ?(AM|am|PM|pm))$/i
-      time = Time.parse(matches.flatten[0])
+      time = Time.parse(matches.flatten[0]).in_time_zone("UTC")
       @scheduled_sms_alert = ScheduledSmsAlert.new(:number => params["From"]) unless @scheduled_sms_alert
       @scheduled_sms_alert.time = time
       @scheduled_sms_alert.authorize!
