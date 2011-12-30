@@ -16,7 +16,7 @@ class ScheduledSmsAlert < ActiveRecord::Base
       end
     end
 
-    scope :for_alerting, lambda { where("time BETWEEN ? and ?", Time.now - 5.minutes, Time.now + 5.minutes)}
+    scope :for_alerting, lambda { where("time BETWEEN ? and ?", (Time.now - 5.minutes).in_time_zone("UTC").strftime("2000-01-01 %H:%M:%S.%6N"), (Time.now + 5.minutes).in_time_zone("UTC").strftime("2000-01-01 %H:%M:%S.%6N"))}
 
     def alert_of_todays_reading
       @daily_reading = DailyReading.first
