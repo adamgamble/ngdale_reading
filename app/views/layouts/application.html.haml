@@ -10,7 +10,7 @@
     .topbar
       .topbar-inner
         .container
-          %a.brand= "North Gardendale Bible Reading - #{Time.now.strftime("%A %B, the ")} #{Time.now.strftime("%-d").to_i.ordinalize}"
+          %a.brand= "North Gardendale Bible Reading - #{Time.zone.now.strftime("%A %B, the ")} #{Time.zone.now.strftime("%-d").to_i.ordinalize}"
           %ul.nav
             -if params["action"] == "home"
               %li
