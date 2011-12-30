@@ -9,7 +9,7 @@ class SmsController < ApplicationController
     case params["Body"].downcase
     when /bible (\d+:\d{2} ?(AM|am|PM|pm))$/i
       matches = params["Body"].scan /bible (\d+:\d{2} ?(AM|am|PM|pm))$/i
-      time = Time.parse(matches.flatten[0]).in_time_zone("UTC")
+      time = Time.zone.parse(matches.flatten[0])
       @scheduled_sms_alert = ScheduledSmsAlert.new(:number => params["From"]) unless @scheduled_sms_alert
       @scheduled_sms_alert.time = time
       @scheduled_sms_alert.authorize!
@@ -17,7 +17,7 @@ class SmsController < ApplicationController
       Rails.logger.warn "Errors: #{@scheduled_sms_alert.errors.full_messages.to_sentence}"
       Rails.logger.warn @scheduled_sms_alert.inspect
       response = Twilio::TwiML::Response.new do |r|
-        r.Sms "You will now receive daily bible reminders at #{time.strftime("%I:%M %p")}", :to => params["From"], :from => "12052891112"
+        r.Sms "You will now receive daily bible reminders at #{time.zone.strftime("%I:%M %p")}", :to => params["From"], :from => "12052891112"
       end
     when "cancel bible"
       response = Twilio::TwiML::Response.new do |r|
