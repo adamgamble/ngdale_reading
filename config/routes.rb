@@ -6,6 +6,8 @@ NgdaleReading::Application.routes.draw do  root :to => "custom_pages#home"
     end
   end
 
+  resources :daily_readings
+
   resources :calls, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.

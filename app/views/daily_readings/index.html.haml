@@ -1,0 +1,26 @@
+%h1 Listing daily_readings
+
+= link_to 'New Daily reading', new_daily_reading_path
+%table
+  %tr
+    %th Date
+    %th Daily
+    %th Weekly
+    %th Monthly
+    %th
+    %th
+    %th
+
+  - @daily_readings.each do |daily_reading|
+    %tr
+      %td= daily_reading.date.strftime("%m/%d/%y")
+      %td= daily_reading.daily_reading
+      %td= daily_reading.weekly_reading
+      %td= daily_reading.monthly_reading
+      %td= link_to 'Show', daily_reading
+      %td= link_to 'Edit', edit_daily_reading_path(daily_reading)
+      %td= link_to 'Destroy', daily_reading, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Daily reading', new_daily_reading_path

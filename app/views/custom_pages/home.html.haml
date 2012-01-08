@@ -1,17 +1,35 @@
+#menu
+  %a.btn.danger{:href => "?date=#{(@daily_reading.date - 1.day).strftime("%Y-%m-%d")}"}Go To Previous Day
+  -unless @daily_reading.date == Time.zone.now.to_date
+    |
+    %a.btn.primary{:href => "?date=#{Time.zone.now.to_date.strftime("%Y-%m-%d")}"}Go To Today's Reading
+  |
+  %a.btn.success{:href => "?date=#{(@daily_reading.date + 1.day).strftime("%Y-%m-%d")}"}Go To Next Day
 %a{:name => "daily"}
 %hr
 %h2= "Daily Reading - #{@daily_reading.daily_reading}"
 %hr
 =esv_bible.lookup_passage(@daily_reading.daily_reading).html_safe
 
-%a{:name => "weekly"}
-%hr
-%h2= "Weekly Reading - #{@daily_reading.weekly_reading}"
-%hr
-=esv_bible.lookup_passage(@daily_reading.weekly_reading).html_safe
+-unless @daily_reading.weekly_reading.blank?
+  %a{:name => "weekly"}
+  %hr
+  %h2= "Weekly Reading - #{@daily_reading.weekly_reading}"
+  %hr
+  =esv_bible.lookup_passage(@daily_reading.weekly_reading).html_safe
+-else
+  %a{:name => "weekly"}
+  %hr
+  %h2= "Weekly Reading - None"
+  %hr
 
-%a{:name => "monthly"}
-%hr
-%h2= "Monthly Reading - #{@daily_reading.monthly_reading}"
-%hr
-=esv_bible.lookup_passage(@daily_reading.monthly_reading).html_safe
+-unless @daily_reading.monthly_reading.blank?
+  %a{:name => "monthly"}
+  %hr
+  %h2= "Monthly Reading - #{@daily_reading.monthly_reading}"
+  %hr
+  =esv_bible.lookup_passage(@daily_reading.monthly_reading).html_safe
+-else
+  %a{:name => "monthly"}
+  %hr
+  %h2= "Monthly Reading - None"

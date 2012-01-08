@@ -11,6 +11,7 @@ gem 'haml-rails'
 gem 'httparty'
 gem 'heroku'
 gem 'state_machine'
+gem 'twitter_bootstrap_form_for'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,6 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'ruby-debug19'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

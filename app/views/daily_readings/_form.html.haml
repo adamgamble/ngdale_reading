@@ -1,0 +1,18 @@
+= twitter_bootstrap_form_for @daily_reading do |f|
+  -if @daily_reading.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@daily_reading.errors.count, "error")} prohibited this daily_reading from being saved:"
+      %ul
+        - @daily_reading.errors.full_messages.each do |msg|
+          %li= msg
+
+  =f.inputs "Readings" do
+    =f.text_field :date, :placeholder => "yyyy-mm-dd"
+    %br
+    =f.text_field :daily_reading
+    %br
+    =f.text_field :weekly_reading
+    %br
+    =f.text_field :monthly_reading
+  .actions
+    = f.submit 'Save'

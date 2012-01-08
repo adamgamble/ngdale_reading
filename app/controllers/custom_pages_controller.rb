@@ -1,5 +1,9 @@
 class CustomPagesController < ApplicationController
   def home
-    @daily_reading = DailyReading.appropriate_reading
+    if params["date"]
+      @daily_reading = DailyReading.where(:date => Time.zone.parse(params["date"]).to_date).first
+    else
+      @daily_reading = DailyReading.appropriate_reading
+    end
   end
 end
