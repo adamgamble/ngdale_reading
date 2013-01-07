@@ -28,14 +28,6 @@
             %a.brand= "North Gardendale Bible Reading - #{@daily_reading.date.strftime("%A %B, ")} #{@daily_reading.date.strftime("%-d").to_i.ordinalize}"
           -else
             %a.brand= "North Gardendale Bible Reading"
-          %ul.nav
-            -if params["action"] == "home"
-              %li
-                %a{:href => "#daily"} Skip to Daily
-              %li
-                %a{:href => "#weekly"} Skip to Weekly
-              %li
-                %a{:href => "#monthly"} Skip to Monthly
     .container
       .content
         = yield

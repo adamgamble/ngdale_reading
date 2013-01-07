@@ -17,11 +17,6 @@
   %h2= "Weekly Reading - #{@daily_reading.weekly_reading}"
   %hr
   =esv_bible.lookup_passage(@daily_reading.weekly_reading).html_safe
--else
-  %a{:name => "weekly"}
-  %hr
-  %h2= "Weekly Reading - None"
-  %hr
 
 -unless @daily_reading.monthly_reading.blank?
   %a{:name => "monthly"}
@@ -29,7 +24,3 @@
   %h2= "Monthly Reading - #{@daily_reading.monthly_reading}"
   %hr
   =esv_bible.lookup_passage(@daily_reading.monthly_reading).html_safe
--else
-  %a{:name => "monthly"}
-  %hr
-  %h2= "Monthly Reading - None"
