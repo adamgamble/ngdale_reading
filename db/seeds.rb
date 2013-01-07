@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+#
+#   SECURITY WARNING: No secret option provided to Rack::Session::Cookie
+DailyReading.create(:date => Date.today, :daily_reading => "Genesis 1:1", :weekly_reading => "Genesis 1:1", :monthly_reading => "Genesis 1:1")

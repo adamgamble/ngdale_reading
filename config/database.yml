@@ -1,8 +1,9 @@
-development: &development
-  database: ngdale_reading_development
+development:
   adapter: postgresql
-  encoding: unicode
+  database: ngdale_reading_development
   host: localhost
-  username: postgres
-  password: postgres
-  pool: 5
+
+test:
+  adapter: postgresql
+  database: ngdale_reading_test
+  host: localhost
